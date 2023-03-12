@@ -111,6 +111,7 @@ export function useGame(
         cells.value.forEach((c) => {
           if (rivers.find((r) => Math.abs(r.y - c.y) <= 1) !== undefined) {
             c.chess = undefined
+            c.opened = true;
           }
         })
       } else if (cell.cellType === 'bank' && selectedCell.chess?.id === Dragon) {
