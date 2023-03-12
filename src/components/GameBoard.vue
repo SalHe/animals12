@@ -3,6 +3,7 @@ import { chessName } from '@/chess'
 import { playerLetty, playerSalHe, useRestartableGame } from '@/compose/game'
 import { ref } from 'vue'
 import BoardCell from './BoardCell.vue'
+import GameIntroduction from './GameIntroduction.vue';
 
 const colors: any = {
   [playerSalHe]: '#3498db',
@@ -26,14 +27,10 @@ const restartGame = () => {
   <div class="board-container">
     <div class="board">
       <template v-for="c in cells" :key="c">
-        <BoardCell
-          :cell="c"
-          :player-colors="colors"
-          :chess-name="chessName"
-          @click-cell="clickCell"
-        />
+        <BoardCell :cell="c" :player-colors="colors" :chess-name="chessName" @click-cell="clickCell" />
       </template>
     </div>
+
     <div style="align-self: center">
       <div v-if="!gameOver">
         轮到：<span :style="{ color: turn ? colors[turn] : 'inherit' }">{{
@@ -46,6 +43,8 @@ const restartGame = () => {
       <div v-else>平局</div>
       <a @click="restartGame">Restart</a>
     </div>
+
+    <GameIntroduction />
   </div>
 </template>
 

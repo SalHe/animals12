@@ -74,6 +74,7 @@ export function useGame(
   }
 
   const selectCell = (cell: Cell): void => {
+    if (!cell.chess) return
     if (selectedCell) {
       selectedCell.selected = false
     }
