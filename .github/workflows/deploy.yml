@@ -11,11 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 7.17.1
+
     - name: Install pnpm dependencies (with cache)
       uses: covbot/pnpm-install-with-cache@v1
-
-    - name: Install dependencies
-      run: pnpm install
 
     - name: Build
       env:
